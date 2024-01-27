@@ -1,18 +1,23 @@
-DROP DATABASE IF EXISTS ventas;
-CREATE DATABASE ventas CHARACTER SET utf8mb4;
-USE ventas;
+--DROP DATABASE IF EXISTS ventas;
+--CREATE DATABASE ventas;
+
+-- Postgres no tiene USE
+-- USE ventas;
 
 CREATE TABLE cliente (
-                         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        -- Postgres no tiene auto_increment utiliza SERIAL
+                        --   |
+                        --   v
+                         id SERIAL PRIMARY KEY,
                          nombre VARCHAR(100) NOT NULL,
                          apellido1 VARCHAR(100) NOT NULL,
                          apellido2 VARCHAR(100),
                          ciudad VARCHAR(100),
-                         categoría INT UNSIGNED
+                         categoría INT
 );
 
 CREATE TABLE comercial (
-                           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                           id SERIAL PRIMARY KEY,
                            nombre VARCHAR(100) NOT NULL,
                            apellido1 VARCHAR(100) NOT NULL,
                            apellido2 VARCHAR(100),
@@ -20,11 +25,14 @@ CREATE TABLE comercial (
 );
 
 CREATE TABLE pedido (
-                        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                        total DOUBLE NOT NULL,
+                        id SERIAL PRIMARY KEY,
+                        --  DOUBLE NECESITA PRECISION
+                        --                  |
+                        --                  V
+                        total DOUBLE PRECISION NOT NULL,
                         fecha DATE,
-                        id_cliente INT UNSIGNED NOT NULL,
-                        id_comercial INT UNSIGNED NOT NULL,
+                        id_cliente INT NOT NULL,
+                        id_comercial INT NOT NULL,
                         FOREIGN KEY (id_cliente) REFERENCES cliente(id),
                         FOREIGN KEY (id_comercial) REFERENCES comercial(id)
 );
