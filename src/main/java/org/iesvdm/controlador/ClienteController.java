@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.iesvdm.modelo.Cliente;
 import org.iesvdm.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +17,28 @@ import org.springframework.web.servlet.view.RedirectView;
 //@RequestMapping("/clientes")
 public class ClienteController {
 
+	@Autowired
 	private ClienteService clienteService;
 
 	//Se utiliza inyección automática por constructor del framework Spring.
 	//Por tanto, se puede omitir la anotación Autowired
 	//@Autowired
-	public ClienteController(ClienteService clienteService) {
-		this.clienteService = clienteService;
+
+
+	@GetMapping("/clientes/crear")
+	public String crearCliente(Model model) {
+		List<Cliente> listarCliente = clienteService.listAll();
+		model.addAttribute("clientes", listarCliente);
+
+		return "cliente/crear-cliente";
 	}
+/*
+	@GetMapping("/clientes/crear")
+	public RedirectView submitCrear(@ModelAttribute("cliente") Cliente cliente){
+		clienteService.newCliente(cliente);
+		return new RedirectView("/clientes");
+	}*/
+
 
 	//@RequestMapping(value = "/clientes", method = RequestMethod.GET)
 	//equivalente a la siguiente anotación
@@ -42,6 +57,22 @@ public class ClienteController {
 		return "detalle-cliente";
 	}
 
+	@GetMapping("/clientes/editar/{id}")
+	public String editar(Model model, @PathVariable Integer id) {
+		Cliente cliente = clienteService.listAll().get(id);
+		model.addAttribute("cliente", cliente);
+		return "editar-cliente";
+	}
 
+	@PostMapping("/clientes/editar/{id}")
+	public RedirectView submitEditar(@ModelAttribute("cliente") Cliente cliente) {
+		clienteService.replaceCliente(cliente);
+		return new RedirectView("/clientes");
+	}
+
+	/*@PostMapping("/clientes/borrar/{id}")
+	public RedirectView borrar(@PathVariable Integer id) {
+
+	}*/
 
 }
