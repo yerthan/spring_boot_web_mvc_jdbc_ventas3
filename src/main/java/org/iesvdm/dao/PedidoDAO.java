@@ -11,7 +11,7 @@ public interface PedidoDAO {
 
     public void create(Pedido pedido);
 
-    public void delete(long  id);
+    public void deleteByClienteID(long  id);
     public Optional<Pedido> buscarPedidoPorId(long id);
     public void update(Pedido pedido);
     public List<Pedido> pedidoIDCliente(int id_cliente);

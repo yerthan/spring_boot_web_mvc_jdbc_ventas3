@@ -26,18 +26,18 @@ public class ClienteController {
 
 
 	@GetMapping("/clientes/crear")
-	public String crearCliente(Model model) {
-		List<Cliente> listarCliente = clienteService.listAll();
-		model.addAttribute("clientes", listarCliente);
+	public String crear(Model model) {
+		//List<Cliente> listarCliente = clienteService.listAll();
+		model.addAttribute("clientes", new Cliente());
 
-		return "cliente/crear-cliente";
+		return "crear-cliente";
 	}
-/*
-	@GetMapping("/clientes/crear")
+
+	@PostMapping("/clientes/crear")
 	public RedirectView submitCrear(@ModelAttribute("cliente") Cliente cliente){
 		clienteService.newCliente(cliente);
 		return new RedirectView("/clientes");
-	}*/
+	}
 
 
 	//@RequestMapping(value = "/clientes", method = RequestMethod.GET)
@@ -47,7 +47,7 @@ public class ClienteController {
 
 		List<Cliente> listaClientes =  clienteService.listAll();
 		model.addAttribute("listaClientes", listaClientes);
-		return "/clientes";
+		return "clientes";
 	}
 
 	@GetMapping("/clientes/{codigo}")
@@ -70,9 +70,10 @@ public class ClienteController {
 		return new RedirectView("/clientes");
 	}
 
-	/*@PostMapping("/clientes/borrar/{id}")
+	@PostMapping("/clientes/borrar/{id}")
 	public RedirectView borrar(@PathVariable Integer id) {
-
-	}*/
+		clienteService.delete(id);
+		return new RedirectView("/clientes");
+	}
 
 }

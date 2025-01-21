@@ -14,7 +14,66 @@
 </head>
 <body>
 <div class="container">
-
+    <body>
+    <div class="container mx-auto px-4">
+        <div class="flex flex-row py-4 items-center border-b-2 p-2">
+            <div class="basis-1/2 text-4xl">
+                <h1>Detalle Cliente</h1>
+            </div>
+            <form class="basis-1/2 flex justify-center" action="/clientes" >
+                <button class="btn btn-gray float-right">Volver</button>
+            </form>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Cliente ID</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.id}" value="Código" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Nombre</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.nombre}" value="cliente" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Apellido1</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.apellido1}" value="apellido1" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Apellido2</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.apellido2}" value="Apellido2" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Ciudad</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.ciudad}" value="cliente" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="flex flex-row my-0.5">
+            <div class="basis-1/2">
+                <label>Categoria</label>
+            </div>
+            <div class="basis-1/2">
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.categoria}" value="ciudad" readonly="readonly"/>
+            </div>
+        </div>
+    </div>
+    </body>
 </div>
 </body>
 </html>
