@@ -16,10 +16,10 @@
 
 
 <div class="container mx-auto px-4">
-    <form  th:action="@{/cliente/editar/__${cliente.id}__}" th:object="${cliente}" method="post" >
+    <form  th:action="@{/comercial/editar/__${comercial.id}__}" th:object="${comercial}" method="post" >
         <div class="flex flex-row py-4 items-center border-b-2 p-2">
             <div class="basis-1/2 text-4xl">
-                <h1>Editar Cliente</h1>
+                <h1>Editar Comercial</h1>
             </div>
             <div class="basis-1/2 flex justify-center">
                 <!--RECUERDA: por defecto, button es type="submit",
@@ -32,7 +32,7 @@
                 <label>Nombre</label>
             </div>
             <div class="basis-1/2">
-                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"  >
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:field="*{nombre}">
             </div>
         </div>
         <div class="flex flex-row my-0.5">
@@ -40,7 +40,7 @@
                 <label>Apellido1</label>
             </div>
             <div class="basis-1/2">
-                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"/>
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:field="*{apellido1}"/>
             </div>
         </div>
         <div class="flex flex-row my-0.5">
@@ -48,27 +48,18 @@
                 <label>Apellido 2</label>
             </div>
             <div class="basis-1/2">
-                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" />
+                <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:field="*{apellido2}"/>
             </div>
             <div class="flex flex-row my-0.5">
                 <div class="basis-1/2">
-                    <label>Ciudad</label>
+                    <label>Comision</label>
                 </div>
                 <div class="basis-1/2">
-                    <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"/>
-                </div>
-            </div>
-            <div class="flex flex-row my-0.5">
-                <div class="basis-1/2">
-                    <label>Categoria</label>
-                </div>
-                <div class="basis-1/2">
-                    <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"/>
+                    <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:field="*{comision}"/>
                 </div>
             </div>
         </div>
-        </div>
-    </form>
+</form>
 </div>
 </body>
 </html>
