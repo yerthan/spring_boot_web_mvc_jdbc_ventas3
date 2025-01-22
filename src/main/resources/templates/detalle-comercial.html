@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Clientes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .clearfix::after {
             content: "";
@@ -65,8 +66,39 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <h2>Pedidos del comercial</h2>
+            <div th:each="pedido : ${listaPedidos}" class="mb-3">
+                <div class="form-group">
+                    <label>ID Pedido</label>
+                    <input type="text" th:value="${pedido.id}" class="form-control" readonly/>
+                </div>
+
+                <div class="form-group">
+                    <label>Total</label>
+                    <input type="text" th:value="${pedido.total}" class="form-control" readonly/>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="text" th:value="${pedido.fecha}" class="form-control" readonly/>
+                </div>
+                <div class="form-group">
+                    <label>Cliente</label>
+                    <input type="text" th:value="${cliente.nombre}" class="form-control" readonly="readonly"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <form action="/comercial">
+                <button type="submit" class="btn btn-secondary">Volver</button>
+            </form>
+        </div>
     </div>
     </body>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

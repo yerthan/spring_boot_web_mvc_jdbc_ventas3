@@ -1,7 +1,9 @@
 package org.iesvdm.controlador;
 
+import org.iesvdm.dao.PedidoDAOImpl;
 import org.iesvdm.modelo.Cliente;
 import org.iesvdm.modelo.Comercial;
+import org.iesvdm.modelo.Pedido;
 import org.iesvdm.service.ClienteService;
 import org.iesvdm.service.ComercialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,12 @@ public class ComercialController {
 
     @Autowired
     private ComercialService comercialService;
+
+    @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
+    private PedidoDAOImpl pedidoDAO;
 
     //Se utiliza inyección automática por constructor del framework Spring.
     //Por tanto, se puede omitir la anotación Autowired
@@ -58,6 +66,13 @@ public class ComercialController {
     @GetMapping("/comercial/{codigo}")
     public String detalle(Model model, @PathVariable Integer codigo) {
         Comercial comercial = comercialService.findById(codigo);
+
+        List<Pedido> listaPedidos = pedidoDAO.filterByComercialId(codigo);
+        model.addAttribute("listaPedidos", listaPedidos);
+
+        Cliente cliente = clienteService.findById(codigo);
+        model.addAttribute("cliente", cliente);
+
         model.addAttribute("comercial", comercial);
         return "detalle-comercial";
     }

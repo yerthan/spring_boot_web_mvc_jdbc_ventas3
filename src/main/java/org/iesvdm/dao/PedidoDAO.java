@@ -7,13 +7,16 @@ import java.util.Optional;
 
 public interface PedidoDAO {
 
-    public List<Pedido> listarPedidos();
-
     public void create(Pedido pedido);
 
-    public void deleteByClienteID(long  id);
-    public Optional<Pedido> buscarPedidoPorId(long id);
-    public void update(Pedido pedido);
-    public List<Pedido> pedidoIDCliente(int id_cliente);
+    public List<Pedido> getAll();
 
+    public Optional<Pedido> find(int id);
+
+    public void update(Pedido pedido);
+
+    public void delete(int id);
+
+    public List<Pedido> filterByClienteId(int id);
+    public List<Pedido> filterByComercialId(int id);
 }

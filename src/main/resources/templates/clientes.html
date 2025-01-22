@@ -11,11 +11,12 @@
 }
 
 </style>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <body>
 
-<div id="contenedora" class="mt-4" style="float:none; margin: 0 auto;width: 95%;" >
+<div id="contenedora" class="mt-5" style="float:none; margin: 0 auto;width: 95%;" >
 	<div class="clearfix d-flex justify-content-between align-items-center mb-3">
 		<div style="float: left; width: 50%">
 			<h1>Clientes</h1>
@@ -34,35 +35,35 @@
 	<div class="clearfix">
 		<hr/>
 	</div>
-	<div class="clearfix">
-		<div style="float: left;width: 14%">Id</div>
-		<div style="float: left;width: 14%">Nombre</div>
-		<div style="float: left;width: 14%">Apellido1</div>
-		<div style="float: left;width: 14%">Apellido2</div>
-		<div style="float: left;width: 14%">Ciudad</div>
-		<div style="float: left;width: 14%">Categoría</div>
-		<div style="float: none;width: auto;overflow: hidden;">Acción</div>
+	<div class="row mb-2">
+		<div class="col-12 col-md-1">Id</div>
+		<div class="col-12 col-md-2">Nombre</div>
+		<div class="col-12 col-md-2">Apellido1</div>
+		<div class="col-12 col-md-2">Apellido2</div>
+		<div class="col-12 col-md-2">Ciudad</div>
+		<div class="col-12 col-md-2">Categoría</div>
+		<div class="col-12 col-md-1 text-center">Acción</div>
 	</div>
 	<div class="clearfix">
 		<hr/>
 	</div>
 
-	<div  th:each="cliente : ${listaClientes}" style="margin-top: 6px;" class="clearfix">
-		<div style="float: left;width: 14%" th:text="${cliente.id}">0</div>
-		<div style="float: left;width: 14%" th:text="${cliente.nombre}">nombre</div>
-		<div style="float: left;width: 14%" th:text="${cliente.apellido1}">apellido1</div>
-		<div style="float: left;width: 14%" th:text="${cliente.apellido2 ?: '&nbsp;'}">apellido2</div>
-		<div style="float: left;width: 14%" th:text="${cliente.ciudad}">ciudad</div>
-		<div style="float: left;width: 14%" th:text="${cliente.categoria}">categoría</div>
-		<div style="float: none;width: auto;overflow: hidden;">
-			<form th:action="@{/clientes/__${cliente.id}__}" style="display: inline;">
-				<input type="submit" value="Ver Detalle" />
+	<div  th:each="cliente : ${listaClientes}" style="margin-top: 6px;" class="row mb-2">
+		<div class="col-12 col-md-1" th:text="${cliente.id}">0</div>
+		<div class="col-12 col-md-2" th:text="${cliente.nombre}">nombre</div>
+		<div class="col-12 col-md-2" th:text="${cliente.apellido1}">apellido1</div>
+		<div class="col-12 col-md-2" th:text="${cliente.apellido2 ?: '&nbsp;'}">apellido2</div>
+		<div class="col-12 col-md-2" th:text="${cliente.ciudad}">ciudad</div>
+		<div class="col-12 col-md-1 text-center"  th:text="${cliente.categoria}">categoría</div>
+		<div class="d-flex justify-content-center">
+			<form th:action="@{/clientes/__${cliente.id}__}" class="d-inline mr-2">
+				<input type="submit" class="btn btn-dark btn-sm" value="Ver Detalle" />
 			</form>
-			<form th:action="@{/clientes/editar/}+${cliente.id} " style="display: inline;">
-				<input type="submit" value="Editar" />
+			<form th:action="@{/clientes/editar/}+${cliente.id} " class="d-inline mr-2">
+				<input class="btn btn-dark btn-sm" type="submit" value="Editar" />
 			</form>
-			<form th:action="@{/clientes/borrar/__${cliente.id}__}" method="post" style="display: inline;">
-				<input type="submit" value="Eliminar" />
+			<form th:action="@{/clientes/borrar/__${cliente.id}__}" method="post" class="d-inline mr-2">
+				<input type="submit" value="Eliminar" class="btn btn-dark btn-sm" />
 			</form>
 		</div>
 	</div>
