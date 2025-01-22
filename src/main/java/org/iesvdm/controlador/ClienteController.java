@@ -59,7 +59,7 @@ public class ClienteController {
 
 	@GetMapping("/clientes/editar/{id}")
 	public String editar(Model model, @PathVariable Integer id) {
-		Cliente cliente = clienteService.listAll().get(id);
+		Cliente cliente = clienteService.findById(id);
 		model.addAttribute("cliente", cliente);
 		return "editar-cliente";
 	}
