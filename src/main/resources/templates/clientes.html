@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Clientes</title>
+<title th:field="#{clients.title}">Clientes</title>
 <style>
 .clearfix::after {
 	content: "";
@@ -37,12 +37,13 @@
 	</div>
 	<div class="row mb-2">
 		<div class="col-12 col-md-1">Id</div>
-		<div class="col-12 col-md-2">Nombre</div>
-		<div class="col-12 col-md-2">Apellido1</div>
-		<div class="col-12 col-md-2">Apellido2</div>
-		<div class="col-12 col-md-2">Ciudad</div>
-		<div class="col-12 col-md-2">Categoría</div>
-		<div class="col-12 col-md-1 text-center">Acción</div>
+		<div class="col-12 col-md-2" th:text="#{msg.name.client}"></div>
+
+		<div class="col-12 col-md-2" th:text="#{msg.firstSurname.client}"></div>
+		<div class="col-12 col-md-2" th:text="#{msg.secondSurname.client}"></div>
+		<div class="col-12 col-md-2" th:text="#{msg.city.client}">Ciudad</div>
+		<div class="col-12 col-md-2" th:text="#{msg.category.client}"></div>
+		<div class="col-12 col-md-1 text-center" th:text="#{msg.action.client}">Acción</div>
 	</div>
 	<div class="clearfix">
 		<hr/>

@@ -1,6 +1,7 @@
 package org.iesvdm.controlador;
 
 import org.iesvdm.dao.PedidoDAOImpl;
+import org.iesvdm.dto.PedidoDTO;
 import org.iesvdm.modelo.Cliente;
 import org.iesvdm.modelo.Comercial;
 import org.iesvdm.modelo.Pedido;
@@ -67,7 +68,7 @@ public class ComercialController {
     public String detalle(Model model, @PathVariable Integer codigo) {
         Comercial comercial = comercialService.findById(codigo);
 
-        List<Pedido> listaPedidos = pedidoDAO.filterByComercialId(codigo);
+        List<PedidoDTO> listaPedidos = pedidoDAO.filterByComercialId(codigo);
         model.addAttribute("listaPedidos", listaPedidos);
 
         Cliente cliente = clienteService.findById(codigo);

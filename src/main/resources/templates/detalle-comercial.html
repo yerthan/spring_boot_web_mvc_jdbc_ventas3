@@ -19,7 +19,7 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-row py-4 items-center border-b-2 p-2">
             <div class="basis-1/2 text-4xl">
-                <h1>Detalle Comercial</h1>
+                <h1 th:text="#{msg.details.seller}">Detalle Comercial</h1>
             </div>
             <form class="basis-1/2 flex justify-center" action="/clientes" >
                 <button class="btn btn-gray float-right">Volver</button>
@@ -27,7 +27,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Comercial ID</label>
+                <label th:text="#{msg.idSeller.seller}">Comercial ID</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${comercial.id}" value="Código" readonly="readonly"/>
@@ -35,7 +35,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Nombre</label>
+                <label th:text="#{msg.name.seller}">Nombre</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${comercial.nombre}" value="nombre" readonly="readonly"/>
@@ -43,7 +43,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Apellido1</label>
+                <label th:text="#{msg.firstSurname.seller}">Apellido1</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${comercial.apellido1}" value="apellido1" readonly="readonly"/>
@@ -51,7 +51,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Apellido2</label>
+                <label th:text="#{msg.secondSurname.seller}">Apellido2</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${comercial.apellido2}" value="Apellido2" readonly="readonly"/>
@@ -59,7 +59,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Comision</label>
+                <label th:text="#{msg.comision.seller}">Comision</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${comercial.comision}" value="cliente" readonly="readonly"/>
@@ -70,21 +70,21 @@
             <h2>Pedidos del comercial</h2>
             <div th:each="pedido : ${listaPedidos}" class="mb-3">
                 <div class="form-group">
-                    <label>ID Pedido</label>
+                    <label th:text="#{msg.idOrder.order}">ID Pedido</label>
                     <input type="text" th:value="${pedido.id}" class="form-control" readonly/>
                 </div>
 
                 <div class="form-group">
-                    <label>Total</label>
+                    <label th:text="#{msg.total.order}">Total</label>
                     <input type="text" th:value="${pedido.total}" class="form-control" readonly/>
                 </div>
 
                 <div class="form-group">
-                    <label>Fecha</label>
+                    <label th:text="#{msg.date.order}">Fecha</label>
                     <input type="text" th:value="${pedido.fecha}" class="form-control" readonly/>
                 </div>
                 <div class="form-group">
-                    <label>Cliente</label>
+                    <label th:text="#{msg.client.order}">Cliente</label>
                     <input type="text" th:value="${cliente.nombre}" class="form-control" readonly="readonly"/>
                 </div>
             </div>

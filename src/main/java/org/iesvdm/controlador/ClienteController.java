@@ -2,6 +2,8 @@ package org.iesvdm.controlador;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import org.iesvdm.mapper.ClienteMapper;
 import org.iesvdm.modelo.Cliente;
 import org.iesvdm.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@AllArgsConstructor
 //Se puede fijar ruta base de las peticiones de este controlador.
 //Los mappings de los métodos tendrían este valor /clientes como
 //prefijo.
@@ -19,7 +22,7 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
-
+	private ClienteMapper clienteMapper;
 	//Se utiliza inyección automática por constructor del framework Spring.
 	//Por tanto, se puede omitir la anotación Autowired
 	//@Autowired
@@ -46,7 +49,9 @@ public class ClienteController {
 	public String listar(Model model) {
 
 		List<Cliente> listaClientes =  clienteService.listAll();
+
 		model.addAttribute("listaClientes", listaClientes);
+
 		return "clientes";
 	}
 

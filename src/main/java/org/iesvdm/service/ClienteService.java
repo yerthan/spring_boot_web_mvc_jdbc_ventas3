@@ -1,10 +1,13 @@
 package org.iesvdm.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.iesvdm.dao.ClienteDAO;
 import org.iesvdm.dao.PedidoDAO;
+import org.iesvdm.dto.ClienteDTO;
+import org.iesvdm.dto.PedidoDTO;
 import org.iesvdm.modelo.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +30,9 @@ public class ClienteService {
 	}
 	
 	public List<Cliente> listAll() {
-		
+
+		List<Cliente> listCliente = clienteDAO.getAll();
 		return clienteDAO.getAll();
-		
 	}
 
 
@@ -57,5 +60,25 @@ public class ClienteService {
 
 	}
 	
+	public Optional<ClienteDTO> obtenerClientePorId(int id) {
+		Optional<Cliente> optionalCliente = clienteDAO.find(id);
 
+		if(optionalCliente.isPresent()){
+			Cliente cliente = optionalCliente.get();
+			List<PedidoDTO> pedidos = pedidoDAO.filterByClienteId(id);
+
+			ClienteDTO clienteDTO =  ClienteDTO.builder()
+					.id(cliente.getId())
+					.nombre(cliente.getNombre())
+					.apellido1(cliente.getApellido1())
+					.apellido2(cliente.getApellido2())
+					.ciudad(cliente.getCiudad())
+					.pedidos(pedidos)
+					.build();
+
+			return Optional.of(clienteDTO);
+		}
+
+		return Optional.empty();
+	}
 }

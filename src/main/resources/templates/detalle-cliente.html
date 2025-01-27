@@ -35,7 +35,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Nombre</label>
+                <label th:text="#{msg.name.client}">Nombre</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.nombre}" value="cliente" readonly="readonly"/>
@@ -43,7 +43,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Apellido1</label>
+                <label th:text="#{msg.firstSurname.client}">Apellido1</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.apellido1}" value="apellido1" readonly="readonly"/>
@@ -51,7 +51,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Apellido2</label>
+                <label th:text="#{msg.secondSurname.client}">Apellido2</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.apellido2}" value="Apellido2" readonly="readonly"/>
@@ -59,7 +59,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Ciudad</label>
+                <label th:text="#{msg.city.client}">Ciudad</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.ciudad}" value="cliente" readonly="readonly"/>
@@ -67,7 +67,7 @@
         </div>
         <div class="flex flex-row my-0.5">
             <div class="basis-1/2">
-                <label>Categoria</label>
+                <label th:text="#{msg.category.client}">Categoria</label>
             </div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${cliente.categoria}" value="ciudad" readonly="readonly"/>

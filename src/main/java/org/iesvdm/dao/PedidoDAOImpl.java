@@ -1,6 +1,7 @@
 package org.iesvdm.dao;
 
 import lombok.extern.slf4j.Slf4j;
+import org.iesvdm.dto.PedidoDTO;
 import org.iesvdm.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -109,15 +110,13 @@ public class PedidoDAOImpl implements PedidoDAO {
     }
 
     @Override
-    public List<Pedido> filterByClienteId(int id) {
-        List<Pedido> lista = jdbcTemplate.query(
+    public List<PedidoDTO> filterByClienteId(int id) {
+        List<PedidoDTO> lista = jdbcTemplate.query(
                 "SELECT * FROM pedido WHERE id_cliente = ?",
-                (rs, rowNum) -> new Pedido(
+                (rs, rowNum) -> new PedidoDTO(
                         rs.getInt("id"),
-                        rs.getDouble("total"),
                         rs.getDate("fecha"),
-                        rs.getInt("id_cliente"),
-                        rs.getInt("id_comercial")
+                        rs.getDouble("total")
                 ), id
 
         );
@@ -126,16 +125,14 @@ public class PedidoDAOImpl implements PedidoDAO {
     }
 
     @Override
-    public List<Pedido> filterByComercialId(int id) {
-        List<Pedido> lista = jdbcTemplate.query(
+    public List<PedidoDTO> filterByComercialId(int id) {
+        List<PedidoDTO> lista = jdbcTemplate.query(
                 "SELECT * FROM pedido WHERE id_comercial = ?",
 
-                (rs, rowNum) -> new Pedido(
+                (rs, rowNum) -> new PedidoDTO(
                         rs.getInt("id"),
-                        rs.getDouble("total"),
                         rs.getDate("fecha"),
-                        rs.getInt("id_cliente"),
-                        rs.getInt("id_comercial")
+                        rs.getDouble("total")
                 ), id
 
         );

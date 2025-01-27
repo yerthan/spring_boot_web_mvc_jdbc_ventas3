@@ -17,4 +17,5 @@ public class Pedido {
     private int id_cliente;
     private int id_comercial;
 
+
 }
